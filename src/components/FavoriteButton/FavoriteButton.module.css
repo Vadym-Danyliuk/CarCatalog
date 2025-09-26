@@ -1,0 +1,26 @@
+.button {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.8);
+  transition: color 0.3s ease, transform 0.2s ease;
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.button:hover {
+  transform: scale(1.1);
+}
+
+.button.active {
+  color: var(--primary-color);
+}
+
+.button.active svg path {
+  fill: var(--primary-color);
+}

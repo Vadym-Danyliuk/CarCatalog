@@ -1,0 +1,111 @@
+.filter {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-bottom: 32px;
+  padding: 20px;
+  background: #f7f7fb;
+  border-radius: 14px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.label {
+  font-size: 14px;
+  color: #8a8a89;
+  font-weight: 500;
+}
+
+.select,
+.input {
+  padding: 14px 18px;
+  border: none;
+  border-radius: 14px;
+  background: #fff;
+  font-size: 16px;
+  color: var(--text-primary);
+}
+
+.select:focus,
+.input:focus {
+  outline: 2px solid var(--primary-color);
+}
+
+.mileageGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.mileageGroup .input {
+  flex: 1;
+}
+
+.buttons {
+  display: flex;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.submitBtn,
+.resetBtn {
+  padding: 14px 44px;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.submitBtn {
+  background-color: var(--primary-color);
+  color: white;
+  flex: 1;
+}
+
+.submitBtn:hover {
+  background-color: var(--primary-hover);
+}
+
+.resetBtn {
+  background-color: #e7e7e7;
+  color: var(--text-primary);
+}
+
+.resetBtn:hover {
+  background-color: #d7d7d7;
+}
+
+@media (min-width: 768px) {
+  .filter {
+    flex-direction: row;
+    align-items: flex-end;
+    flex-wrap: wrap;
+  }
+
+  .field {
+    flex: 1;
+    min-width: 200px;
+  }
+
+  .buttons {
+    flex: 0 0 auto;
+    margin-top: 0;
+  }
+}
+
+@media (min-width: 1440px) {
+  .filter {
+    justify-content: center;
+    gap: 18px;
+  }
+
+  .field {
+    flex: 0 0 auto;
+    min-width: 224px;
+  }
+}
