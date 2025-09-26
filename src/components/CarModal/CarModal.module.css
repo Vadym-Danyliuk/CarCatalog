@@ -4,12 +4,13 @@
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: var(--bg-modal);
+  background-color: rgba(18, 20, 23, 0.5);
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   z-index: 1000;
-  padding: 20px;
+  padding: 96px 20px 20px;
+  overflow-y: auto;
 }
 
 .modal {
@@ -17,10 +18,19 @@
   border-radius: 24px;
   max-width: 541px;
   width: 100%;
-  max-height: 90vh;
-  overflow-y: auto;
-  padding: 40px;
   position: relative;
+  animation: modalAppear 0.3s ease-out;
+}
+
+@keyframes modalAppear {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .closeBtn {
@@ -29,58 +39,71 @@
   right: 16px;
   background: transparent;
   border: none;
-  font-size: 24px;
-  cursor: pointer;
-  color: var(--text-primary);
   width: 24px;
   height: 24px;
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: transform 0.2s;
+  color: #121417;
+  z-index: 10;
 }
 
 .closeBtn:hover {
-  transform: rotate(90deg);
+  opacity: 0.7;
+}
+
+.carInfo {
+  padding: 40px;
+  border-bottom: 1px solid rgba(18, 20, 23, 0.1);
+}
+
+.imageWrapper {
+  width: 100%;
+  height: 248px;
+  border-radius: 14px;
+  overflow: hidden;
+  margin-bottom: 14px;
 }
 
 .image {
   width: 100%;
-  height: 248px;
+  height: 100%;
   object-fit: cover;
-  border-radius: 14px;
-  margin-bottom: 14px;
 }
 
 .title {
   font-size: 18px;
   font-weight: 500;
+  line-height: 1.33;
+  color: #121417;
   margin-bottom: 8px;
-  color: var(--text-primary);
 }
 
 .model {
-  color: var(--primary-color);
+  color: #3470ff;
 }
 
-.tags {
+.details {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 6px;
   margin-bottom: 14px;
-  color: var(--text-secondary);
   font-size: 12px;
+  line-height: 1.5;
+  color: rgba(18, 20, 23, 0.5);
 }
 
-.tags span:not(:last-child)::after {
-  content: '|';
+.details span:not(:last-child)::after {
+  content: "|";
   margin-left: 6px;
+  color: rgba(18, 20, 23, 0.1);
 }
 
 .description {
   font-size: 14px;
   line-height: 1.43;
-  color: var(--text-primary);
+  color: #121417;
   margin-bottom: 24px;
 }
 
@@ -88,11 +111,31 @@
   margin-bottom: 24px;
 }
 
+.section:last-child {
+  margin-bottom: 0;
+}
+
 .subtitle {
   font-size: 14px;
   font-weight: 500;
+  line-height: 1.43;
+  color: #121417;
   margin-bottom: 8px;
-  color: var(--text-primary);
+}
+
+.accessories {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  font-size: 12px;
+  line-height: 1.5;
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.accessories span:not(:last-child)::after {
+  content: "|";
+  margin-left: 6px;
+  color: rgba(18, 20, 23, 0.1);
 }
 
 .conditions {
@@ -103,35 +146,177 @@
 
 .condition {
   padding: 7px 14px;
-  background: var(--bg-condition);
+  background: #f9f9f9;
   border-radius: 35px;
   font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: -0.24px;
   color: #363535;
+  white-space: nowrap;
 }
 
-.condition strong {
-  color: var(--primary-color);
+.highlight {
+  color: #3470ff;
   font-weight: 600;
 }
 
-.rentalBtn {
-  display: inline-block;
-  padding: 12px 50px;
-  background-color: var(--primary-color);
-  color: white;
-  text-decoration: none;
+.bookingSection {
+  padding: 24px 40px 40px;
+}
+
+.bookingTitle {
+  font-size: 18px;
+  font-weight: 500;
+  line-height: 1.33;
+  color: #121417;
+  margin-bottom: 8px;
+}
+
+.bookingSubtitle {
+  font-size: 12px;
+  line-height: 1.17;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 24px;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.inputGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.inputGroup .input {
+  flex: 1;
+}
+
+.input {
+  width: 100%;
+  height: 48px;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(18, 20, 23, 0.05);
+  border-radius: 14px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
+  background: #f7f7fb;
+}
+
+.input::placeholder {
+  color: #121417;
+}
+
+.input:focus {
+  outline: none;
+  border-color: #3470ff;
+}
+
+.dateGroup {
+  display: flex;
+  gap: 8px;
+}
+
+.dateInputWrapper {
+  flex: 1;
+  position: relative;
+}
+
+.dateInput {
+  width: 100%;
+  height: 48px;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(18, 20, 23, 0.05);
+  border-radius: 14px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
+  background: #f7f7fb;
+  appearance: none;
+}
+
+.dateInput::-webkit-calendar-picker-indicator {
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+.dateInput:focus {
+  outline: none;
+  border-color: #3470ff;
+}
+
+.dateLabel {
+  position: absolute;
+  top: -8px;
+  left: 18px;
+  background: white;
+  padding: 0 4px;
+  font-size: 12px;
+  color: rgba(18, 20, 23, 0.5);
+  pointer-events: none;
+}
+
+.textarea {
+  width: 100%;
+  min-height: 116px;
+  padding: 14px 18px;
+  border: 1.5px solid rgba(18, 20, 23, 0.05);
+  border-radius: 14px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #121417;
+  background: #f7f7fb;
+  resize: vertical;
+  font-family: inherit;
+}
+
+.textarea::placeholder {
+  color: #121417;
+}
+
+.textarea:focus {
+  outline: none;
+  border-color: #3470ff;
+}
+
+.submitBtn {
+  width: 100%;
+  height: 50px;
+  background: #3470ff;
+  border: none;
   border-radius: 12px;
   font-size: 14px;
   font-weight: 600;
-  transition: background-color 0.3s;
+  line-height: 1.43;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  margin-top: 10px;
 }
 
-.rentalBtn:hover {
-  background-color: var(--primary-hover);
+.submitBtn:hover {
+  background: #0b44cd;
 }
 
-@media (max-width: 480px) {
-  .modal {
+@media (max-width: 640px) {
+  .overlay {
+    padding: 20px 10px;
+  }
+
+  .carInfo,
+  .bookingSection {
     padding: 24px;
+  }
+
+  .inputGroup,
+  .dateGroup {
+    flex-direction: column;
+    gap: 14px;
   }
 }

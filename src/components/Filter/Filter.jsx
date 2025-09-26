@@ -82,7 +82,7 @@ const Filter = ({ onFilter }) => {
               setFilters({ ...filters, rentalPrice: e.target.value })
             }
           >
-            <option value="">Choose a price</option>
+            <option value="">To $</option>
             {priceOptions.map((price) => (
               <option key={price} value={price}>
                 To ${price}
@@ -107,10 +107,10 @@ const Filter = ({ onFilter }) => {
 
       <div className={styles.field}>
         <label className={styles.label}>Car mileage / km</label>
-        <div className={styles.mileageGroup}>
+        <div className={styles.mileageInputs}>
           <input
             type="number"
-            className={styles.input}
+            className={`${styles.input} ${styles.inputFrom}`}
             placeholder="From"
             value={filters.minMileage}
             onChange={(e) =>
@@ -119,7 +119,7 @@ const Filter = ({ onFilter }) => {
           />
           <input
             type="number"
-            className={styles.input}
+            className={`${styles.input} ${styles.inputTo}`}
             placeholder="To"
             value={filters.maxMileage}
             onChange={(e) =>

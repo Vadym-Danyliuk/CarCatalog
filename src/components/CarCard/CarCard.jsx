@@ -57,7 +57,7 @@ const CarCard = ({ car, onReadMore }) => {
         </div>
 
         <button className={styles.button} onClick={() => onReadMore(car)}>
-          Learn more
+          Rental car
         </button>
       </div>
     </article>
