@@ -1,6 +1,5 @@
 .card {
   width: 274px;
-  height: 426px;
   background: #ffffff;
   border-radius: 14px;
   overflow: hidden;
@@ -33,14 +32,13 @@
   flex: 1;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 0;
+  margin-bottom: 8px;
 }
 
 .title {
@@ -69,12 +67,14 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
+  margin-bottom: 28px;
 }
 
 .detailsRow {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
+  gap: 6px;
 }
 
 .detailItem {
@@ -86,13 +86,13 @@
 
 .detailItem:not(:last-child)::after {
   content: "|";
-  margin: 0 6px;
+  margin-left: 6px;
   color: rgba(18, 20, 23, 0.1);
 }
 
 .button {
   width: 100%;
-  padding: 12px;
+  height: 44px;
   background-color: #3470ff;
   color: white;
   border: none;
@@ -101,7 +101,6 @@
   font-weight: 600;
   cursor: pointer;
   transition: background-color 0.3s ease;
-  margin-top: auto;
 }
 
 .button:hover {

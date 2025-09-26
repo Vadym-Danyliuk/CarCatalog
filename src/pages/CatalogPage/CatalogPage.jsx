@@ -4,7 +4,6 @@ import CarCard from "../../components/CarCard/CarCard";
 import Filter from "../../components/Filter/Filter";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import Loader from "../../components/Loader/Loader";
-import CarModal from "../../components/CarModal/CarModal";
 import styles from "./CatalogPage.module.css";
 
 const ITEMS_PER_PAGE = 12;
@@ -16,7 +15,6 @@ const CatalogPage = () => {
   const [loadingMore, setLoadingMore] = useState(false);
   const [hasMore, setHasMore] = useState(true);
   const [filters, setFilters] = useState({});
-  const [selectedCar, setSelectedCar] = useState(null);
 
   useEffect(() => {
     loadCars();
@@ -67,10 +65,6 @@ const CatalogPage = () => {
     loadCars(page + 1, true);
   };
 
-  const handleReadMore = (car) => {
-    setSelectedCar(car);
-  };
-
   return (
     <div className={styles.container}>
       <Filter onFilter={handleFilter} />
@@ -83,7 +77,7 @@ const CatalogPage = () => {
             <>
               <div className={styles.grid}>
                 {cars.map((car) => (
-                  <CarCard key={car.id} car={car} onReadMore={handleReadMore} />
+                  <CarCard key={car.id} car={car} />
                 ))}
               </div>
 
@@ -98,10 +92,6 @@ const CatalogPage = () => {
             </div>
           )}
         </>
-      )}
-
-      {selectedCar && (
-        <CarModal car={selectedCar} onClose={() => setSelectedCar(null)} />
       )}
     </div>
   );

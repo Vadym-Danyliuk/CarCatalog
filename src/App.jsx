@@ -3,6 +3,7 @@ import { Toaster } from "react-hot-toast";
 import Layout from "./components/Layout/Layout";
 import HomePage from "./pages/HomePage/HomePage";
 import CatalogPage from "./pages/CatalogPage/CatalogPage";
+import CarDetailsPage from "./pages/CarDetailsPage/CarDetailsPage";
 import { FavoritesProvider } from "./hooks/useFavorites";
 import "./styles/globals.css";
 
@@ -13,6 +14,7 @@ function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<HomePage />} />
           <Route path="catalog" element={<CatalogPage />} />
+          <Route path="car/:id" element={<CarDetailsPage />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Route>
       </Routes>

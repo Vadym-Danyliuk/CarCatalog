@@ -1,16 +1,22 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import FavoriteButton from "../FavoriteButton/FavoriteButton";
 import { formatMileage } from "../../utils/formatMileage";
 import styles from "./CarCard.module.css";
 
-const CarCard = ({ car, onReadMore }) => {
+const CarCard = ({ car }) => {
   const [imageError, setImageError] = useState(false);
+  const navigate = useNavigate();
 
   const addressParts = car.address.split(", ");
   const city = addressParts[1] || "";
   const country = addressParts[2] || "";
 
   const displayItems = [...car.accessories, ...car.functionalities].slice(0, 3);
+
+  const handleLearnMore = () => {
+    navigate(`/car/${car.id}`);
+  };
 
   return (
     <article className={styles.card}>
@@ -44,7 +50,7 @@ const CarCard = ({ car, onReadMore }) => {
             <span className={styles.detailItem}>{car.model}</span>
             <span className={styles.detailItem}>{car.id}</span>
             <span className={styles.detailItem}>
-              Mileage: {formatMileage(car.mileage)}
+              {formatMileage(car.mileage)}
             </span>
           </div>
           <div className={styles.detailsRow}>
@@ -56,8 +62,8 @@ const CarCard = ({ car, onReadMore }) => {
           </div>
         </div>
 
-        <button className={styles.button} onClick={() => onReadMore(car)}>
-          Rental car
+        <button className={styles.button} onClick={handleLearnMore}>
+          Learn more
         </button>
       </div>
     </article>
