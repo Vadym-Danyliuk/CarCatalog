@@ -9,7 +9,6 @@ const api = axios.create({
   },
 });
 
-// Interceptor для обробки помилок
 api.interceptors.response.use(
   (response) => response,
   (error) => {
@@ -20,7 +19,6 @@ api.interceptors.response.use(
 
 export const getCars = async (params = {}) => {
   try {
-    // Очистити пусті параметри
     const cleanParams = Object.entries(params).reduce((acc, [key, value]) => {
       if (value !== "" && value !== null && value !== undefined) {
         acc[key] = value;

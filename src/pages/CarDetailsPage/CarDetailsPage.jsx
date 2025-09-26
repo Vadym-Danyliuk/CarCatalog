@@ -1,11 +1,11 @@
-import { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-import { getCarById } from '../../services/api';
-import { formatMileage } from '../../utils/formatMileage';
-import Loader from '../../components/Loader/Loader';
-import FavoriteButton from '../../components/FavoriteButton/FavoriteButton';
-import toast from 'react-hot-toast';
-import styles from './CarDetailsPage.module.css';
+import { useState, useEffect } from "react";
+import { useParams, useNavigate } from "react-router-dom";
+import { getCarById } from "../../services/api";
+import { formatMileage } from "../../utils/formatMileage";
+import Loader from "../../components/Loader/Loader";
+import FavoriteButton from "../../components/FavoriteButton/FavoriteButton";
+import toast from "react-hot-toast";
+import styles from "./CarDetailsPage.module.css";
 
 const CarDetailsPage = () => {
   const { id } = useParams();
@@ -13,12 +13,12 @@ const CarDetailsPage = () => {
   const [car, setCar] = useState(null);
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    startDate: '',
-    endDate: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    startDate: "",
+    endDate: "",
+    message: "",
   });
 
   useEffect(() => {
@@ -31,9 +31,9 @@ const CarDetailsPage = () => {
       const data = await getCarById(id);
       setCar(data);
     } catch (error) {
-      console.error('Error loading car details:', error);
-      toast.error('Failed to load car details');
-      navigate('/catalog');
+      console.error("Error loading car details:", error);
+      toast.error("Failed to load car details");
+      navigate("/catalog");
     } finally {
       setLoading(false);
     }
@@ -41,57 +41,65 @@ const CarDetailsPage = () => {
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
-    setFormData(prev => ({ ...prev, [name]: value }));
+    setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    
-    // Валідація
-    if (!formData.name || !formData.email || !formData.phone || !formData.startDate || !formData.endDate) {
-      toast.error('Please fill in all required fields');
+
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.startDate ||
+      !formData.endDate
+    ) {
+      toast.error("Please fill in all required fields");
       return;
     }
-    
-    // Успішне бронювання
+
     toast.success(`Successfully booked ${car.brand} ${car.model}!`);
-    
-    // Очищення форми
+
     setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      startDate: '',
-      endDate: '',
-      message: ''
+      name: "",
+      email: "",
+      phone: "",
+      startDate: "",
+      endDate: "",
+      message: "",
     });
   };
 
   if (loading) return <Loader />;
   if (!car) return null;
 
-  const addressParts = car.address.split(', ');
+  const addressParts = car.address.split(", ");
   const city = addressParts[1];
   const country = addressParts[2];
 
   return (
     <div className={styles.container}>
-      <button onClick={() => navigate('/catalog')} className={styles.backBtn}>
+      <button onClick={() => navigate("/catalog")} className={styles.backBtn}>
         ← Back to Catalog
       </button>
 
       <div className={styles.content}>
         <div className={styles.imageSection}>
           <div className={styles.imageWrapper}>
-            <img src={car.img} alt={`${car.brand} ${car.model}`} className={styles.image} />
+            <img
+              src={car.img}
+              alt={`${car.brand} ${car.model}`}
+              className={styles.image}
+            />
             <FavoriteButton carId={car.id} />
           </div>
-          
+
           <div className={styles.info}>
             <h1 className={styles.title}>
-              {car.brand} <span className={styles.model}>{car.model}</span>, {car.year}
+              {car.brand} <span className={styles.model}>{car.model}</span>,{" "}
+              {car.year}
             </h1>
-            
+
             <div className={styles.price}>
               <span className={styles.priceLabel}>Price:</span>
               <span className={styles.priceValue}>${car.rentalPrice}/hour</span>
@@ -100,7 +108,9 @@ const CarDetailsPage = () => {
             <div className={styles.details}>
               <div className={styles.detailItem}>
                 <span className={styles.detailLabel}>Location:</span>
-                <span>{city}, {country}</span>
+                <span>
+                  {city}, {country}
+                </span>
               </div>
               <div className={styles.detailItem}>
                 <span className={styles.detailLabel}>Type:</span>
@@ -126,11 +136,17 @@ const CarDetailsPage = () => {
             </div>
 
             <div className={styles.section}>
-              <h2 className={styles.sectionTitle}>Accessories and functionalities</h2>
+              <h2 className={styles.sectionTitle}>
+                Accessories and functionalities
+              </h2>
               <div className={styles.tags}>
-                {[...car.accessories, ...car.functionalities].map((item, index) => (
-                  <span key={index} className={styles.tag}>{item}</span>
-                ))}
+                {[...car.accessories, ...car.functionalities].map(
+                  (item, index) => (
+                    <span key={index} className={styles.tag}>
+                      {item}
+                    </span>
+                  )
+                )}
               </div>
             </div>
 
@@ -138,7 +154,9 @@ const CarDetailsPage = () => {
               <h2 className={styles.sectionTitle}>Rental Conditions</h2>
               <div className={styles.conditions}>
                 {car.rentalConditions.map((condition, index) => (
-                  <span key={index} className={styles.condition}>{condition}</span>
+                  <span key={index} className={styles.condition}>
+                    {condition}
+                  </span>
                 ))}
               </div>
             </div>

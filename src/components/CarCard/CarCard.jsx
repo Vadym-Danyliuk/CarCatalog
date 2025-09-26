@@ -10,7 +10,6 @@ const CarCard = ({ car, onReadMore }) => {
   const city = addressParts[1] || "";
   const country = addressParts[2] || "";
 
-  // Перші 3 елементи accessories + functionalities для показу в картці
   const displayItems = [...car.accessories, ...car.functionalities].slice(0, 3);
 
   return (

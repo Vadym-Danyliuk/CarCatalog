@@ -11,8 +11,7 @@ const Filter = ({ onFilter }) => {
     maxMileage: "",
   });
 
-  // Preset price options
-  const priceOptions = [10, 20, 30, 40, 50, 60, 70, 80, 90, 100];
+  const priceOptions = [30, 40, 50, 60, 70, 80, 90, 100];
 
   useEffect(() => {
     loadBrands();
@@ -30,7 +29,6 @@ const Filter = ({ onFilter }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // Clean empty values
     const cleanFilters = Object.entries(filters).reduce((acc, [key, value]) => {
       if (value !== "" && value !== null && value !== undefined) {
         acc[key] = value;
@@ -39,16 +37,6 @@ const Filter = ({ onFilter }) => {
     }, {});
 
     onFilter(cleanFilters);
-  };
-
-  const handleReset = () => {
-    setFilters({
-      brand: "",
-      rentalPrice: "",
-      minMileage: "",
-      maxMileage: "",
-    });
-    onFilter({});
   };
 
   return (
