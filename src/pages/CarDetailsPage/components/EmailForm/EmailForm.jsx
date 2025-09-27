@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { toast } from "react-hot-toast";
-// import DatePicker from "../DatePicker/DatePicker";
+import DatePicker from "../DatePicker/DatePicker";
 import styles from "./EmailForm.module.css";
 
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -79,7 +79,6 @@ const EmailForm = ({ carId, onClose }) => {
     e.preventDefault();
 
     if (!validateForm()) {
-    
       const firstError = Object.values(errors)[0];
       if (firstError) {
         toast.error(firstError);
@@ -90,7 +89,6 @@ const EmailForm = ({ carId, onClose }) => {
     setIsSubmitting(true);
 
     try {
-
       await new Promise((resolve) => setTimeout(resolve, 1000));
 
       console.log("Booking submitted:", {
@@ -99,7 +97,6 @@ const EmailForm = ({ carId, onClose }) => {
         submittedAt: new Date().toISOString(),
       });
 
-
       setFormData({
         name: "",
         email: "",
@@ -107,14 +104,11 @@ const EmailForm = ({ carId, onClose }) => {
         comment: "",
       });
 
-
       setShowBookingSuccess(true);
       toast.success("Booking successful! We will contact you soon.");
       
-
       setTimeout(() => {
         setShowBookingSuccess(false);
-
         if (onClose) {
           setTimeout(onClose, 500);
         }
@@ -140,10 +134,10 @@ const EmailForm = ({ carId, onClose }) => {
   };
 
   return (
-    <div className={styles.EmailFormContainer}>
-      <div className={styles.EmailFormHeader}>
-        <h2 className={styles.EmailFormTitle}>Book your car now</h2>
-        <p className={styles.EmailFormSubtitle}>
+    <div className={styles.emailFormContainer}>
+      <div className={styles.emailFormHeader}>
+        <h2 className={styles.emailFormTitle}>Book your car now</h2>
+        <p className={styles.emailFormSubtitle}>
           Stay connected! We are always ready to help you.
         </p>
       </div>
@@ -176,7 +170,7 @@ const EmailForm = ({ carId, onClose }) => {
           </button>
         </div>
       ) : (
-        <form onSubmit={handleSubmit} className={styles.EmailForm} noValidate>
+        <form onSubmit={handleSubmit} className={styles.emailForm} noValidate>
           <div className={styles.formGroup}>
             <input
               type="text"
@@ -225,7 +219,6 @@ const EmailForm = ({ carId, onClose }) => {
               error={!!errors.bookingDate}
               disabled={isSubmitting}
               placeholder="Booking date*"
-              className={styles.datePicker}
             />
             {errors.bookingDate && (
               <span className={styles.errorMessage} role="alert">

@@ -1,32 +1,36 @@
-@import "../../styles/mixins.css"; 
-
-.EmailFormContainer {
-  border: 1px solid var(--form-dark-border-color);
-  border-radius: 10px;
-  padding: 16px;
+.emailFormContainer {
+  border: 1px solid rgba(18, 20, 23, 0.1);
+  border-radius: 24px;
+  padding: 32px;
   width: 100%;
-  @mixin tablet {
-    padding: 32px;
+  background: #ffffff;
+}
+
+@media (max-width: 640px) {
+  .emailFormContainer {
+    padding: 24px;
   }
 }
 
-.EmailFormHeader {
+.emailFormHeader {
   margin-bottom: 24px;
 }
 
-.EmailFormTitle {
-  font-weight: 600;
-  font-size: 20px;
-  line-height: 24px;
-  margin-bottom: 8px;
-}
-
-.EmailFormSubtitle {
+.emailFormTitle {
   font-weight: 500;
-  color: var(--color-secondary-text);
+  font-size: 18px;
+  line-height: 1.33;
+  margin-bottom: 8px;
+  color: #121417;
 }
 
-.EmailForm {
+.emailFormSubtitle {
+  font-size: 12px;
+  line-height: 1.17;
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.emailForm {
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -40,45 +44,79 @@
 
 .formInput,
 .formTextarea {
-  border-radius: 12px;
+  width: 100%;
   padding: 14px 20px;
-  border: 0;
-  font-weight: 500;
-  line-height: 20px;
-  background: var(--form-element-background);
-  color: var(--color-secondary-text);
-  &:focus {
-    outline: none;
-  }
-  &:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-  }
-  &::placeholder {
-    color: var(--color-secondary-text);
-    font-weight: 500;
-  }
+  border: 1.5px solid rgba(18, 20, 23, 0.05);
+  border-radius: 14px;
+  font-size: 16px;
+  line-height: 1.25;
+  color: #727272;
+  background: #f7f7fb;
+  font-family: inherit;
+}
+
+.formInput:focus,
+.formTextarea:focus {
+  outline: none;
+  border-color: #3470ff;
+}
+
+.formInput:disabled,
+.formTextarea:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.formInput::placeholder,
+.formTextarea::placeholder {
+  color: #797979;
 }
 
 .formTextarea {
-  font-size: 16px;
-  resize: none;
-  height: 88px;
+  min-height: 116px;
+  resize: vertical;
 }
 
 .inputError {
-  border-color: var(--color-error);
-  background: var(--background-error);
+  border-color: #e74c3c !important;
+  background: #fdf2f2 !important;
 }
 
 .errorMessage {
   font-size: 12px;
-  color: var(--color-error);
+  color: #e74c3c;
+  margin-top: 4px;
+}
+
+.characterCount {
+  font-size: 12px;
+  color: rgba(71, 71, 71, 0.5);
+  text-align: right;
+  margin-top: 4px;
 }
 
 .submitButton {
-  max-width: 156px;
-  margin: 0 auto;
+max-width: 156px;
+margin: 0 auto;
+padding: 12px 58px;
+  height: 50px;
+  background: #3470ff;
+  border: none;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.43;
+  color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+.submitButton:hover:not(:disabled) {
+  background: #0b44cd;
 }
 
 .submitButton:disabled {
@@ -86,14 +124,64 @@
   cursor: not-allowed;
 }
 
-.successMessage {
-  background: var(--background-success);
-  border-radius: 8px;
-  padding: 12px 16px;
-  color: var(--color-success);
-  font-size: 14px;
+.buttonContent {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.successContainer {
+  text-align: center;
+  padding: 40px 20px;
+}
+
+.successIcon {
+  margin: 0 auto 16px;
+  width: 48px;
+  height: 48px;
+}
+
+.successTitle {
+  font-size: 18px;
   font-weight: 500;
-  animation: slideIn 0.3s ease-out;
+  color: #3470ff;
+  margin-bottom: 12px;
+}
+
+.successMessage {
+  font-size: 14px;
+  color: rgba(18, 20, 23, 0.5);
+  margin-bottom: 24px;
+  line-height: 1.5;
+}
+
+.newBookingButton {
+  background: #3470ff;
+  color: #ffffff;
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.newBookingButton:hover {
+  background: #0b44cd;
 }
 
 @keyframes slideIn {

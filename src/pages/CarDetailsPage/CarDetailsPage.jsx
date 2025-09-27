@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { getCarById } from "../../services/api";
-import { formatMileage } from "../../utils/formatMileage";
 import EmailForm from "./components/EmailForm/EmailForm";
 import Loader from "../../components/Loader/Loader";
 import Container from "../../components/Container/Container";
@@ -73,15 +72,22 @@ const CarDetailsPage = () => {
 
   return (
     <Container className={styles.carWrapper}>
-      <div className={styles.carLeftSide}>
-        <img
-          src={car.img}
-          alt={`${car.brand} ${car.model}`}
-          className={styles.carImage}
-          loading="eager"
-        />
+      <div className={styles.leftColumn}>
+        <div className={styles.carImageWrapper}>
+          <img
+            src={car.img}
+            alt={`${car.brand} ${car.model}`}
+            className={styles.carImage}
+            loading="eager"
+          />
+        </div>
+        
+        <div className={styles.formSection}>
+          <EmailForm carId={car.id} />
+        </div>
       </div>
-      <div className={styles.carRightSide}>
+      
+      <div className={styles.rightColumn}>
         <CarHeadingSection car={car} />
         <CarCharacteristicList
           title="Rental Conditions:"
@@ -102,8 +108,6 @@ const CarDetailsPage = () => {
           }))}
         />
       </div>
-        <EmailForm carId={car.id} />
-
     </Container>
   );
 };
