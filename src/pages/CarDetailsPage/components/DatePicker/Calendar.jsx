@@ -51,7 +51,7 @@ const Calendar = ({ selectedDate, onDateSelect }) => {
     }
     
 
-    const remainingCells = 42 - days.length; 
+    const remainingCells = 35 - days.length; 
     for (let day = 1; day <= remainingCells; day++) {
       days.push({
         date: day,

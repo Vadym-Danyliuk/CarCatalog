@@ -52,21 +52,7 @@ const DatePicker = ({
         <span className={selectedDate ? styles.valueText : styles.placeholder}>
           {selectedDate ? formatDate(selectedDate) : placeholder}
         </span>
-        <svg 
-          className={`${styles.icon} ${isOpen ? styles.iconOpen : ''}`}
-          width="16" 
-          height="16" 
-          viewBox="0 0 16 16"
-        >
-          <path
-            d="M4 6L8 10L12 6"
-            stroke="currentColor"
-            strokeWidth="1.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            fill="none"
-          />
-        </svg>
+      
       </div>
       
       {isOpen && (

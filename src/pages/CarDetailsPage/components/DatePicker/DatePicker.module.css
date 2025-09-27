@@ -38,7 +38,7 @@
 }
 
 .placeholder {
-  color: #121417;
+  color: #969696;
   font-weight: 500;
 }
 
@@ -53,6 +53,8 @@
 }
 
 .dropdown {
+  max-width: 276px;
+  max-height: 284px;
   position: absolute;
   top: calc(100% + 4px);
   left: 0;
