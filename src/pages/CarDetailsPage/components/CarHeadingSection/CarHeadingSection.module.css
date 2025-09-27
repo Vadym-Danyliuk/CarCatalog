@@ -1,0 +1,47 @@
+.wrapper {
+  margin-bottom: 68px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 8px;
+}
+
+.titlePrimary {
+  margin-right: 16px;
+}
+
+.titleSecondary {
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 500;
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.info {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 18px;
+}
+
+.infoItem {
+  display: flex;
+  align-items: center;
+  font-size: 14px;
+  color: rgba(18, 20, 23, 0.5);
+}
+
+.icon {
+  margin-right: 2px;
+}
+
+.price {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 32px;
+  color: #3470ff;
+  margin-bottom: 32px;
+}

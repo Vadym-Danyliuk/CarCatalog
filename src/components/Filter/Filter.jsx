@@ -1,9 +1,12 @@
 import { useState, useEffect } from "react";
 import { getBrands } from "../../services/api";
+import CustomSelect from "../CustomSelect/CustomSelect";
+import RangeInput from "../RangeInput/RangeInput";
 import styles from "./Filter.module.css";
 
 const Filter = ({ onFilter }) => {
   const [brands, setBrands] = useState([]);
+  const [isBrandsError, setIsBrandsError] = useState(false);
   const [filters, setFilters] = useState({
     brand: "",
     rentalPrice: "",
@@ -11,7 +14,9 @@ const Filter = ({ onFilter }) => {
     maxMileage: "",
   });
 
-  const priceOptions = [30, 40, 50, 60, 70, 80, 90, 100];
+  const priceOptions = Array.from({ length: 15 }, (_, i) =>
+    (30 + i * 10).toString()
+  );
 
   useEffect(() => {
     loadBrands();
@@ -19,9 +24,11 @@ const Filter = ({ onFilter }) => {
 
   const loadBrands = async () => {
     try {
+      setIsBrandsError(false);
       const data = await getBrands();
       setBrands(data);
     } catch (error) {
+      setIsBrandsError(true);
       console.error("Error loading brands:", error);
     }
   };
@@ -40,98 +47,46 @@ const Filter = ({ onFilter }) => {
   };
 
   return (
-    <form className={styles.filter} onSubmit={handleSubmit}>
-      <div className={styles.field}>
-        <label className={styles.label}>Car brand</label>
-        <div className={styles.selectWrapper}>
-          <select
-            className={styles.select}
-            value={filters.brand}
-            onChange={(e) => setFilters({ ...filters, brand: e.target.value })}
-          >
-            <option value="">Choose a brand</option>
-            {brands.map((brand) => (
-              <option key={brand} value={brand}>
-                {brand}
-              </option>
-            ))}
-          </select>
-          <svg
-            className={styles.selectIcon}
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M5 7.5L10 12.5L15 7.5"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            />
-          </svg>
-        </div>
+    <form className={styles.searchForm} onSubmit={handleSubmit}>
+      <div className={`${styles.item} ${styles.brand}`}>
+        <div className={styles.label}>Car brand</div>
+        <CustomSelect
+          options={brands}
+          isError={isBrandsError}
+          placeholder="Choose a brand"
+          onChange={(value) => setFilters({ ...filters, brand: value })}
+        />
       </div>
 
-      <div className={styles.field}>
-        <label className={styles.label}>Price/ 1 hour</label>
-        <div className={styles.selectWrapper}>
-          <select
-            className={styles.select}
-            value={filters.rentalPrice}
-            onChange={(e) =>
-              setFilters({ ...filters, rentalPrice: e.target.value })
-            }
-          >
-            <option value="">To $</option>
-            {priceOptions.map((price) => (
-              <option key={price} value={price}>
-                To ${price}
-              </option>
-            ))}
-          </select>
-          <svg
-            className={styles.selectIcon}
-            width="20"
-            height="20"
-            viewBox="0 0 20 20"
-          >
-            <path
-              d="M5 7.5L10 12.5L15 7.5"
-              stroke="currentColor"
-              strokeWidth="2"
-              fill="none"
-            />
-          </svg>
-        </div>
+      <div className={`${styles.item} ${styles.price}`}>
+        <div className={styles.label}>Price/ 1 hour</div>
+        <CustomSelect
+          options={priceOptions}
+          placeholder="Choose a price"
+          textBeforeValue="To $"
+          className={styles.priceSelect}
+          onChange={(value) => setFilters({ ...filters, rentalPrice: value })}
+        />
       </div>
 
-      <div className={styles.field}>
-        <label className={styles.label}>Car mileage / km</label>
-        <div className={styles.mileageInputs}>
-          <input
-            type="number"
-            className={`${styles.input} ${styles.inputFrom}`}
-            placeholder="From"
-            value={filters.minMileage}
-            onChange={(e) =>
-              setFilters({ ...filters, minMileage: e.target.value })
-            }
-          />
-          <input
-            type="number"
-            className={`${styles.input} ${styles.inputTo}`}
-            placeholder="To"
-            value={filters.maxMileage}
-            onChange={(e) =>
-              setFilters({ ...filters, maxMileage: e.target.value })
-            }
-          />
-        </div>
+      <div className={`${styles.item} ${styles.mileage}`}>
+        <div className={styles.label}>Car mileage / km</div>
+        <RangeInput
+          onChange={({ from, to }) => {
+            setFilters({
+              ...filters,
+              minMileage: from ? from.toString() : "",
+              maxMileage: to ? to.toString() : "",
+            });
+          }}
+        />
       </div>
 
-      <button type="submit" className={styles.submitBtn}>
-        Search
-      </button>
+      <div className={styles.buttonWrapper}>
+        <button type="submit" className={styles.button}>
+          Search
+        </button>
+      </div>
     </form>
   );
 };

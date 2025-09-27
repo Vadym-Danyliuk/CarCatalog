@@ -12,61 +12,49 @@ const CarCard = ({ car }) => {
   const city = addressParts[1] || "";
   const country = addressParts[2] || "";
 
-  const displayItems = [...car.accessories, ...car.functionalities].slice(0, 3);
-
   const handleLearnMore = () => {
     navigate(`/car/${car.id}`);
   };
 
   return (
-    <article className={styles.card}>
+    <section className={styles.card}>
       <div className={styles.imageWrapper}>
         <img
           src={imageError ? "/placeholder-car.jpg" : car.img}
           alt={`${car.brand} ${car.model}`}
           className={styles.image}
           onError={() => setImageError(true)}
+          loading="lazy"
         />
         <FavoriteButton carId={car.id} />
       </div>
 
       <div className={styles.content}>
-        <div className={styles.header}>
+        <div className={styles.titleWrap}>
           <h3 className={styles.title}>
-            {car.brand} <span className={styles.model}>{car.model}</span>,{" "}
+            {car.brand} <span className={styles.modelColor}>{car.model}</span>,{" "}
             {car.year}
           </h3>
-          <span className={styles.price}>${car.rentalPrice}</span>
+          <p className={styles.price}>${car.rentalPrice}</p>
         </div>
 
-        <div className={styles.details}>
-          <div className={styles.detailsRow}>
-            <span className={styles.detailItem}>{city}</span>
-            <span className={styles.detailItem}>{country}</span>
-            <span className={styles.detailItem}>{car.rentalCompany}</span>
-            <span className={styles.detailItem}>{car.type}</span>
-          </div>
-          <div className={styles.detailsRow}>
-            <span className={styles.detailItem}>{car.model}</span>
-            <span className={styles.detailItem}>{car.id}</span>
-            <span className={styles.detailItem}>
-              {formatMileage(car.mileage)}
+        <p className={styles.chips}>
+          <span className={styles.chipsItem}>{city}</span>
+          <span className={styles.chipsItem}>{country}</span>
+          <span className={styles.chipsItem}>{car.rentalCompany}</span>
+          <span>
+            <span className={`${styles.capitalize} ${styles.chipsItem}`}>
+              {car.type}
             </span>
-          </div>
-          <div className={styles.detailsRow}>
-            {displayItems.map((item, index) => (
-              <span key={index} className={styles.detailItem}>
-                {item}
-              </span>
-            ))}
-          </div>
-        </div>
+            {formatMileage(car.mileage)} km
+          </span>
+        </p>
 
         <button className={styles.button} onClick={handleLearnMore}>
           Learn more
         </button>
       </div>
-    </article>
+    </section>
   );
 };
 

@@ -1,126 +1,80 @@
-.filter {
-  display: flex;
+.searchForm {
+  display: inline-flex;
+  gap: 16px;
+  text-align: left;
   align-items: flex-end;
-  justify-content: center;
-  gap: 18px;
-  margin-bottom: 50px;
+  flex-wrap: wrap;
+  margin-block: 16px;
+  width: 100%;
 }
 
-.field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+@media (min-width: 1024px) {
+  .searchForm {
+    margin: 84px auto 56px;
+    flex-wrap: nowrap;
+    width: 924px;
+  }
+}
+
+.item {
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .item {
+    width: calc(50% - 8px);
+  }
 }
 
 .label {
-  font-size: 14px;
-  font-weight: 500;
-  line-height: 1.29;
-  color: #8a8a89;
+  font-size: 12px;
+  line-height: 16px;
+  color: #8d929a;
+  margin-bottom: 8px;
 }
 
-.selectWrapper {
-  position: relative;
-}
-
-.select {
-  width: 224px;
-  height: 48px;
-  padding: 14px 44px 14px 18px;
-  background: #f7f7fb;
-  border: none;
-  border-radius: 14px;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.11;
-  color: #121417;
-  appearance: none;
-  cursor: pointer;
-}
-
-.select:focus {
-  outline: none;
-  border: 2px solid #3470ff;
-}
-
-.selectIcon {
-  position: absolute;
-  right: 14px;
-  top: 14px;
-  width: 20px;
-  height: 20px;
-  pointer-events: none;
-}
-
-.mileageInputs {
-  display: flex;
-}
-
-.input {
-  width: 160px;
-  height: 48px;
-  padding: 14px 24px;
-  background: #f7f7fb;
-  border: none;
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.11;
-  color: #121417;
-}
-
-.input::placeholder {
-  color: #121417;
-}
-
-.inputFrom {
-  border-radius: 14px 0 0 14px;
-  border-right: 1px solid rgba(138, 138, 137, 0.2);
-  padding-left: 70px;
-  position: relative;
-}
-
-.inputFrom::before {
-  content: "From";
-  position: absolute;
-  left: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  font-weight: 500;
-  color: #121417;
-}
-
-.inputTo {
-  border-radius: 0 14px 14px 0;
-  padding-left: 48px;
-}
-
-.inputTo::before {
-  content: "To";
-  position: absolute;
-  left: 24px;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 18px;
-  font-weight: 500;
-  color: #121417;
-}
-
-.submitBtn {
-  min-width: 136px;
-  height: 48px;
-  padding: 14px 44px;
-  background: #3470ff;
-  color: #ffffff;
-  border: none;
-  border-radius: 12px;
-  font-size: 14px;
+.button {
+  max-width: 156px;
+  width: 100%;
   font-weight: 600;
-  line-height: 1.43;
+  font-size: 16px;
+  line-height: 20px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  color: #ffffff;
+  background: #3470ff;
+  border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease;
+  transition: background-color 0.25s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.submitBtn:hover {
+.button:hover {
   background: #0b44cd;
+}
+
+.buttonWrapper {
+  margin-left: auto;
+  max-width: 156px;
+  width: 100%;
+}
+
+@media (min-width: 1024px) {
+  .brand {
+    width: 204px;
+  }
+
+  .price {
+    width: 196px;
+  }
+
+  .mileage {
+    width: 320px;
+  }
+}
+
+.priceSelect {
+  --options-max-height: 160px;
 }

@@ -1,20 +1,22 @@
 .button {
-  display: block;
-  margin: 0 auto;
-  padding: 0;
-  background: transparent;
-  color: #3470ff;
-  border: none;
+  width: 100%;
+  font-weight: 600;
   font-size: 16px;
-  font-weight: 500;
-  line-height: 1.5;
-  text-decoration: underline;
+  line-height: 20px;
+  padding: 12px 24px;
+  border-radius: 12px;
+  color: #121417;
+  background: transparent;
+  border: 1px solid #3470ff;
   cursor: pointer;
-  transition: color 0.3s ease;
+  transition: border-color 0.25s ease;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .button:hover:not(:disabled) {
-  color: #0b44cd;
+  border-color: #0b44cd;
 }
 
 .button:disabled {

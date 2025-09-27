@@ -6,7 +6,7 @@ const Header = () => {
     <header className={styles.header}>
       <div className={styles.container}>
         <NavLink to="/" className={styles.logo}>
-          Rental
+          <img src="/logo.svg" alt="RentalCar" />
         </NavLink>
         <nav className={styles.nav}>
           <NavLink
@@ -22,6 +22,7 @@ const Header = () => {
             className={({ isActive }) =>
               isActive ? `${styles.link} ${styles.active}` : styles.link
             }
+            end
           >
             Catalog
           </NavLink>

@@ -1,0 +1,60 @@
+.wrapper {
+  display: flex;
+  align-items: center;
+  background-color: #f7f7f7;
+  border-radius: 12px;
+  padding-inline: 24px;
+  font-weight: 500;
+  position: relative;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding-block: 12px;
+  width: 100%;
+}
+
+.inputWrapper:first-child {
+  border-right: 1px solid #dadde1;
+}
+
+.inputWrapper + .inputWrapper {
+  padding-left: 24px;
+}
+
+@media (min-width: 1024px) {
+  .inputWrapper {
+    min-width: 136px;
+  }
+}
+
+.input {
+  width: 75px;
+  background: none;
+  border: 0;
+  font-size: 16px;
+  color: #121417;
+}
+
+.input:focus {
+  outline: none;
+}
+
+.error .input,
+.error {
+  color: #e74c3c;
+}
+
+.errorText {
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 4px;
+  position: absolute;
+  top: -30px;
+  left: 0;
+  background: #fff;
+  padding: 2px 4px;
+  border-radius: 4px;
+}

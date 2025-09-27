@@ -1,26 +1,21 @@
-.button {
+.favoriteButton {
   position: absolute;
-  top: 14px;
-  right: 14px;
+  top: 0;
+  right: 0;
+  width: 16px;
+  height: 16px;
+  padding: 16px;
+  box-sizing: content-box;
   background: transparent;
   border: none;
   cursor: pointer;
   color: rgba(255, 255, 255, 0.8);
-  transition: color 0.3s ease, transform 0.2s ease;
-  padding: 8px;
+  transition: transform 0.25s ease, color 0.25s ease;
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.button:hover {
+.favoriteButton:hover {
   transform: scale(1.1);
-}
-
-.button.active {
-  color: var(--primary-color);
-}
-
-.button.active svg path {
-  fill: var(--primary-color);
 }

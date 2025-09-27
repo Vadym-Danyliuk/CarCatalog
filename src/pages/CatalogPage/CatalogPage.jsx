@@ -4,6 +4,7 @@ import CarCard from "../../components/CarCard/CarCard";
 import Filter from "../../components/Filter/Filter";
 import LoadMoreBtn from "../../components/LoadMoreBtn/LoadMoreBtn";
 import Loader from "../../components/Loader/Loader";
+import Container from "../../components/Container/Container";
 import styles from "./CatalogPage.module.css";
 
 const ITEMS_PER_PAGE = 12;
@@ -65,35 +66,53 @@ const CatalogPage = () => {
     loadCars(page + 1, true);
   };
 
+  const showLoadMoreButton =
+    !loading && !loadingMore && hasMore && cars.length > 0;
+  const showNoMoreCars =
+    !loading && !loadingMore && !hasMore && cars.length > 0;
+
   return (
-    <div className={styles.container}>
-      <Filter onFilter={handleFilter} />
+    <Container>
+      <h1 className="visually-hidden">Cars list</h1>
+      <div className={styles.center}>
+        <Filter onFilter={handleFilter} />
+      </div>
 
       {loading ? (
         <Loader />
       ) : (
         <>
           {cars.length > 0 ? (
-            <>
-              <div className={styles.grid}>
-                {cars.map((car) => (
-                  <CarCard key={car.id} car={car} />
-                ))}
-              </div>
-
-              {hasMore && (
-                <LoadMoreBtn onClick={handleLoadMore} loading={loadingMore} />
-              )}
-            </>
+            <div className={styles.wrapper}>
+              {cars.map((car) => (
+                <CarCard key={car.id} car={car} />
+              ))}
+            </div>
           ) : (
             <div className={styles.empty}>
               <p>No cars found matching your criteria.</p>
               <p>Try adjusting your filters.</p>
             </div>
           )}
+
+          <div className={styles.center}>
+            {showLoadMoreButton && (
+              <LoadMoreBtn
+                onClick={handleLoadMore}
+                loading={loadingMore}
+                className={styles.loadMore}
+              />
+            )}
+
+            {showNoMoreCars && (
+              <p className={`${styles.center} ${styles.pb}`}>
+                No more cars available.
+              </p>
+            )}
+          </div>
         </>
       )}
-    </div>
+    </Container>
   );
 };
 

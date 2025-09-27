@@ -1,0 +1,21 @@
+.wrapper:not(:last-child) {
+  margin-bottom: 110px;
+}
+
+.title {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  margin-bottom: 20px;
+}
+
+.listItem {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  font-weight: 500;
+}
+
+.listItem:not(:last-child) {
+  margin-bottom: 16px;
+}

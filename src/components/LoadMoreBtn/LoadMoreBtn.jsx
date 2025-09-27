@@ -1,13 +1,13 @@
-import styles from './LoadMoreBtn.module.css';
+import styles from "./LoadMoreBtn.module.css";
 
-const LoadMoreBtn = ({ onClick, loading }) => {
+const LoadMoreBtn = ({ onClick, loading, className = "" }) => {
   return (
-    <button 
-      className={styles.button} 
+    <button
+      className={`${styles.button} ${className}`}
       onClick={onClick}
       disabled={loading}
     >
-      {loading ? 'Loading...' : 'Load More'}
+      {loading ? "Loading..." : "Load more"}
     </button>
   );
 };

@@ -1,245 +1,48 @@
-.container {
-  max-width: 1184px;
-  margin: 0 auto;
-  padding: 24px;
-  display: grid;
-  grid-template-columns: 1fr 400px;
-  gap: 24px;
-  align-items: start;
-}
-
-.leftColumn {
+.waiter {
+  justify-content: center;
   display: flex;
-  flex-direction: column;
-  gap: 24px;
+  align-items: center;
+  height: calc(100vh - 72px);
 }
 
-.imageWrapper {
-  width: 100%;
-  height: 314px;
-  border-radius: 14px;
-  overflow: hidden;
+.carWrapper {
+  padding-block: 84px;
 }
 
-.image {
+@media (min-width: 768px) {
+  .carWrapper {
+    display: flex;
+  }
+}
+
+@media (min-width: 1440px) {
+  .carWrapper {
+    gap: 72px;
+  }
+}
+
+.carLeftSide {
+}
+
+@media (min-width: 1440px) {
+  .carLeftSide {
+    min-width: 640px;
+  }
+}
+
+.carRightSide {
   width: 100%;
-  height: 100%;
+}
+
+@media (min-width: 768px) {
+  .carRightSide {
+    margin-top: 20px;
+  }
+}
+
+.carImage {
+  aspect-ratio: 640 / 512;
+  border-radius: 16px;
+  width: 100%;
   object-fit: cover;
-}
-
-.carInfo {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
-
-.title {
-  font-size: 18px;
-  font-weight: 500;
-  line-height: 1.33;
-  color: #121417;
-  margin: 0;
-}
-
-.model {
-  color: #3470ff;
-}
-
-.location {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: rgba(18, 20, 23, 0.5);
-  margin-bottom: 8px;
-}
-
-.mileage {
-  margin-left: auto;
-}
-
-.price {
-  font-size: 24px;
-  font-weight: 500;
-  color: #3470ff;
-  margin-bottom: 14px;
-}
-
-.description {
-  font-size: 14px;
-  line-height: 1.43;
-  color: #121417;
-  margin: 0;
-}
-
-.section {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.sectionTitle {
-  font-size: 14px;
-  font-weight: 500;
-  color: #121417;
-  margin: 0;
-}
-
-.conditions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.condition {
-  display: flex;
-  align-items: center;
-  padding: 7px 14px;
-  background: #f9f9f9;
-  border-radius: 35px;
-  font-size: 12px;
-  line-height: 1.5;
-  color: #363535;
-}
-
-.highlight {
-  color: #3470ff;
-  font-weight: 600;
-}
-
-.specs {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.specItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: rgba(18, 20, 23, 0.5);
-}
-
-.accessories {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
-}
-
-.accessoryItem {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-size: 12px;
-  color: rgba(18, 20, 23, 0.5);
-}
-
-.rightColumn {
-  position: sticky;
-  top: 24px;
-}
-
-.bookingCard {
-  background: white;
-  border-radius: 24px;
-  padding: 24px;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
-}
-
-.bookingTitle {
-  font-size: 18px;
-  font-weight: 500;
-  color: #121417;
-  margin: 0 0 8px 0;
-}
-
-.bookingSubtitle {
-  font-size: 12px;
-  color: rgba(18, 20, 23, 0.5);
-  margin: 0 0 24px 0;
-}
-
-.form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.input {
-  width: 100%;
-  height: 48px;
-  padding: 14px 18px;
-  border: none;
-  border-radius: 14px;
-  background: #f7f7fb;
-  font-size: 16px;
-  color: #121417;
-}
-
-.input::placeholder {
-  color: rgba(18, 20, 23, 0.5);
-}
-
-.input:focus {
-  outline: 2px solid #3470ff;
-}
-
-.textarea {
-  width: 100%;
-  min-height: 120px;
-  padding: 14px 18px;
-  border: none;
-  border-radius: 14px;
-  background: #f7f7fb;
-  font-size: 16px;
-  color: #121417;
-  resize: vertical;
-  font-family: inherit;
-}
-
-.textarea::placeholder {
-  color: rgba(18, 20, 23, 0.5);
-}
-
-.textarea:focus {
-  outline: 2px solid #3470ff;
-}
-
-.submitBtn {
-  width: 100%;
-  height: 50px;
-  background: #3470ff;
-  color: white;
-  border: none;
-  border-radius: 12px;
-  font-size: 14px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submitBtn:hover {
-  background: #0b44cd;
-}
-
-@media (max-width: 1024px) {
-  .container {
-    grid-template-columns: 1fr;
-    gap: 32px;
-  }
-
-  .rightColumn {
-    position: static;
-  }
-}
-
-@media (max-width: 768px) {
-  .container {
-    padding: 16px;
-  }
-
-  .bookingCard {
-    padding: 20px;
-  }
 }
